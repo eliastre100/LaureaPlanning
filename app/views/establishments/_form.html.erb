@@ -1,22 +1,16 @@
-<%= form_with(model: establishment, local: true) do |form| %>
+<%= form_with model: establishment, local: true do |form| %>
   <% if establishment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(establishment.errors.count, "error") %> prohibited this establishment from being saved:</h2>
-
-      <ul>
-      <% establishment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <% establishment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   <% end %>
 
-  <div class="field">
+  <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
