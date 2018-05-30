@@ -1,6 +1,6 @@
 class StudiesController < ApplicationController
-  before_action :set_establishment
   before_action :set_study, only: [:show, :edit, :update, :destroy]
+  before_action :load_establishments, only: [:new, :create, :edit, :update]
 
   def new
     @study = Study.new
@@ -15,7 +15,7 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(study_params)
     if @study.save
-      redirect_to study_show_url(establishment_id: @establishment.id, id: @study), notice: 'Study was successfully created.'
+      redirect_to @study, notice: 'Study was successfully created.'
     else
       render :new
     end
@@ -23,7 +23,7 @@ class StudiesController < ApplicationController
 
   def update
     if @study.update(study_params)
-      redirect_to study_show_url(establishment_id: @establishment.id, id: @study), notice: 'Study was successfully updated.'
+      redirect_to @study, notice: 'Study was successfully updated.'
     else
       render :new
     end
@@ -31,17 +31,17 @@ class StudiesController < ApplicationController
 
   def destroy
     @study.destroy
-    redirect_to @establishment
+    redirect_to @study.establishment
   end
 
   private
 
   def study_params
-    params.require(:study).permit(:name, :credits, :semester).merge({ establishment_id: @establishment.id })
+    params.require(:study).permit(:name, :credits, :semester, :establishment_id)
   end
 
-  def set_establishment
-    @establishment = Establishment.find(params[:establishment_id])
+  def load_establishments
+    @establishments = Establishment.all
   end
 
   def set_study

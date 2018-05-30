@@ -1,0 +1,24 @@
+<%= form_with model: instance, local: true do |form| %>
+  <% if instance.errors.any? %>
+    <% instance.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= form.label :code %>
+    <%= form.text_field :code%>
+  </div>
+  <div>
+    <%= form.label :start_at %>
+    <%= form.text_field :start_at %>
+  </div>
+  <div>
+    <%= form.label :end_at %>
+    <%= form.text_field :end_at %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
