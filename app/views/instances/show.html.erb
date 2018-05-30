@@ -1,0 +1,24 @@
+<h1><%= @instance.study.name %> (CODE: <%= @instance.code %>) - <%= @instance.study.establishment.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Study</th>
+      <th>Establishment</th>
+      <th>Code</th>
+      <th>Start</th>
+      <th>End</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= link_to @instance.study.name, @instance.study %></td>
+      <td><%= link_to @instance.study.establishment.name, @instance.study.establishment %></td>
+      <td><%= @instance.code %></td>
+      <td><%= @instance.start_at %></td>
+      <td><%= @instance.end_at %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back', @instance.study %>

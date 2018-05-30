@@ -11,11 +11,17 @@
   </div>
   <div>
     <%= form.label :start_at %>
-    <%= form.text_field :start_at %>
+    <%= form.date_select :start_at %>
   </div>
   <div>
     <%= form.label :end_at %>
-    <%= form.text_field :end_at %>
+    <%= form.date_select :end_at %>
+  </div>
+  <div>
+    <%= form.label :study %>
+    <%= form.select(:study_id,
+      options_for_select(@studies.map { |study| [study.name, study.id] }, :selected =>
+      params[:study_id])) %>
   </div>
 
   <div>

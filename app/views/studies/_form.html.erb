@@ -19,7 +19,8 @@
   </div>
 
   <%= form.select(:establishment_id,
-      options_for_select(@establishments.map { |establishment| [establishment.name, establishment.id] }, :selected => params[:establishment_id])) %>
+      options_for_select(@establishments.map { |establishment| [establishment.name, establishment.id] },
+          selected: params[:establishment_id])) %>
 
   <div>
     <%= form.submit %>
