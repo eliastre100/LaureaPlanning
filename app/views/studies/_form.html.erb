@@ -1,0 +1,24 @@
+<%= form_with model: study, url: study_path(id: study.id, establishment_id: study.establishment_id), local: true do |form| %>
+  <% if study.errors.any? %>
+    <% study.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :credits%>
+    <%= form.text_field :credits %>
+  </div>
+  <div>
+    <%= form.label :semester%>
+    <%= form.text_field :semester %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

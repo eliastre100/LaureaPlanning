@@ -1,0 +1,22 @@
+<h1><%= @study.name %> (in <%= @establishment.name %>)</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Credits</td>
+      <td>Semester</td>
+      <td>Establishment</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @study.name %></td>
+      <td><%= @study.credits %></td>
+      <td><%= @study.semester %></td>
+      <td><%= link_to @establishment.name, @establishment %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back', establishment_path(@establishment) %>

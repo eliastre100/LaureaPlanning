@@ -1,3 +1,30 @@
 <h1><%= @establishment.name %></h1>
 
+<h2>Studies available:</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Credits</td>
+      <td>Semester</td>
+      <td colspan="3"></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @establishment.studies.each do |study| %>
+      <tr>
+        <td><%= study.name %></td>
+        <td><%= study.credits %></td>
+        <td><%= study.semester %></td>
+        <td>
+          <%= link_to 'Show', study_show_url(id: study.id, establishment_id: @establishment.id) %>
+          <%= link_to 'Edit', edit_study_path(id: study, establishment_id: @establishment.id) %>
+          <%= link_to 'Destroy', study_show_url(id: study.id, establishment_id: @establishment.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Study', new_study_path(establishment_id: @establishment.id) %>
 <%= link_to 'Back', establishments_path %>
