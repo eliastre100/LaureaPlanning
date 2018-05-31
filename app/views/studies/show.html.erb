@@ -39,7 +39,7 @@
         <td><%= instance.code %></td>
         <td><%= instance.start_at %></td>
         <td><%= instance.end_at %></td>
-        <td></td>
+        <td><%= instance.lessons.count %></td>
         <td>
           <%= link_to 'Show', instance %>
           <%= link_to 'Edit', edit_instance_path(instance) %>

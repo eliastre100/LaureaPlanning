@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2018-05-31 08:32:22
+  end: 2018-05-31 08:32:22
+  room: MyString
+
+two:
+  start: 2018-05-31 08:32:22
+  end: 2018-05-31 08:32:22
+  room: MyString

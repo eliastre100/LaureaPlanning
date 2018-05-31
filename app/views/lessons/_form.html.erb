@@ -1,0 +1,30 @@
+<%= form_with model: lesson, local: true do |form| %>
+  <% if lesson.errors.any? %>
+    <% lesson.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= form.label :start_at %>
+    <%= form.datetime_select :start_at %>
+  </div>
+
+  <div>
+    <%= form.label :end_at %>
+    <%= form.datetime_select :end_at %>
+  </div>
+
+  <div>
+    <%= form.label :room %>
+    <%= form.text_field :room %>
+  </div>
+
+  <%= form.select(:instance_id,
+      options_for_select(@instances.map { |instance| [instance.code, instance.id] },
+          selected: params[:instance_id])) %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
