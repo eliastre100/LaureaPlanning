@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'plannings#index'
+
+  get 'instances/:id/pick', to: 'plannings#create', as: 'pick'
+  delete 'instance/:id/pick', to: 'plannings#destroy', as: 'unpick'
+
   resources :establishments
   resources :studies, except: [:index]
   resources :instances, except: [:index]

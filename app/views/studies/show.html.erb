@@ -1,4 +1,6 @@
-<h1><%= @study.name %> (in <%= @study.establishment.name %>)</h1>
+<h1>
+  Study `<%= @study.name %>`
+</h1>
 
 <table>
   <thead>
@@ -21,7 +23,8 @@
   </tbody>
 </table>
 
-<h3>Instances</h3>
+<hr />
+<h2>Instances</h2>
 
 <table>
   <thead>
@@ -44,6 +47,7 @@
           <%= link_to 'Show', instance %>
           <%= link_to 'Edit', edit_instance_path(instance) %>
           <%= link_to 'Destroy', instance, method: :delete %>
+          <%= link_to 'Pick', pick_path(id: instance) %>
         </td>
       </tr>
     <% end %>

@@ -1,0 +1,40 @@
+<h1>My intances</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Establishment</th>
+      <th>Lesson</th>
+      <th>Instance</th>
+      <th>Credits</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instances.each do |instance| %>
+      <tr>
+        <td><%= link_to instance.study.establishment.name, instance.study.establishment %></td>
+        <td><%= link_to instance.study.name, instance.study %></td>
+        <td><%= link_to instance.code, instance %></td>
+        <td><%= instance.study.credits %></td>
+        <td><%= link_to 'Unpick', unpick_path(id: instance), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr />
+<h3>Recap</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Nb courses</th>
+      <th>Nb Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @instances.select { |instance| instance.study }.uniq.count %></td>
+      <td><%= @instances.map { |instance| instance.study.credits }.inject(&:+) %></td>
+    </tr>
+  </tbody>
+</table>

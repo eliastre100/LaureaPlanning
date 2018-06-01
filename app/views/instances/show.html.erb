@@ -1,5 +1,8 @@
-<h1><%= @instance.study.name %> (CODE: <%= @instance.code %>) - <%= @instance.study.establishment.name %></h1>
+<h1>Instance `<%= @instance.code %>` for `<%= @instance.study.name %>`</h1>
 
+<%= link_to 'Pick', pick_path(id: @instance) %>
+<br />
+<br />
 <table>
   <thead>
     <tr>
@@ -23,6 +26,8 @@
   </tbody>
 </table>
 
+<hr />
+<h2>Lessons list</h2>
 <table>
   <thead>
     <tr>
