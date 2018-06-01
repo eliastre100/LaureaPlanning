@@ -42,3 +42,26 @@
     </tr>
   </tbody>
 </table>
+
+<hr />
+<h2>Conflicts</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Establishment</th>
+      <th>Course</th>
+      <th>Instance</th>
+      <th>Lesson</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @conflicts.each do |conflict| %>
+      <tr>
+        <td><%= link_to conflict.instance.study.establishment.name, conflict.instance.study.establishment %></td>
+        <td><%= link_to conflict.instance.study.name, conflict.instance.study %></td>
+        <td><%= link_to conflict.instance.code, conflict.instance %></td>
+        <td><%= conflict.start_at %> - <%= conflict.end_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
