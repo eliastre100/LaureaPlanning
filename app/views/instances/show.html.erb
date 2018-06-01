@@ -50,13 +50,15 @@
         <td><%= link_to lesson.instance.study.name, lesson.instance.study %></td>
         <td><%= link_to lesson.instance.code, lesson.instance %></td>
         <td>
-          <%= link_to 'Edit', edit_lesson_path(lesson) %>
-          <%= link_to 'Destroy', lesson, method: :delete %>
+          <% if session[:editable] %>
+            <%= link_to 'Edit', edit_lesson_path(lesson) %>
+            <%= link_to 'Destroy', lesson, method: :delete %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Create lesson', new_lesson_path(instance_id: @instance.id) %>
+<%= link_to 'Create lesson', new_lesson_path(instance_id: @instance.id) if session[:editable] %>
 <%= link_to 'Back', @instance.study %>

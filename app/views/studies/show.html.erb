@@ -45,8 +45,10 @@
         <td><%= instance.lessons.count %></td>
         <td>
           <%= link_to 'Show', instance %>
-          <%= link_to 'Edit', edit_instance_path(instance) %>
-          <%= link_to 'Destroy', instance, method: :delete %>
+          <% if session[:editable] %>
+            <%= link_to 'Edit', edit_instance_path(instance) %>
+            <%= link_to 'Destroy', instance, method: :delete %>
+          <% end %>
           <%= link_to 'Pick', pick_path(id: instance) %>
         </td>
       </tr>
@@ -54,5 +56,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Add instance', new_instance_path(study_id: @study.id) %>
+<%= link_to 'Add instance', new_instance_path(study_id: @study.id) if session[:editable] %>
 <%= link_to 'Back', establishment_path(@study.establishment) %>

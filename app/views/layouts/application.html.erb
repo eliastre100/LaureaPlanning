@@ -12,6 +12,14 @@
   <body>
     <%= link_to 'My recap', root_path %>
     <%= link_to 'Establishment list', establishments_path %>
+    <% if session[:editable] %>
+      <%= link_to 'Disable edition', disable_edition_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Enable edition', enable_edition_path %>
+    <% end %>
+
+    <p id="notice"><%= notice %></p>
+
     <%= yield %>
   </body>
 </html>

@@ -4,13 +4,15 @@ class PlanningsController < ApplicationController
   end
 
   def create
-    session[:instances] = instances_ids.push(params[:id]) unless instances_ids.include?(params[:id])
-    redirect_back fallback_location: root_path
+    instance = Instance.find(params[:id])
+    session[:instances] = instances_ids.push(instance.id) unless instances_ids.include?(instance.id)
+    redirect_back fallback_location: root_path, notice: "Successfully picked instance #{instance.code}"
   end
 
   def destroy
-    session[:instances] = instances_ids - [params[:id]]
-    redirect_back fallback_location: root_path
+    instance = Instance.find(params[:id])
+    session[:instances] = instances_ids - [instance.id]
+    redirect_back fallback_location: root_path, notice: "Successfully unpicked instance #{instance.code}"
   end
 
   private

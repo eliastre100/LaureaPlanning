@@ -20,13 +20,15 @@
         <td><%= study.instances.count %></td>
         <td>
           <%= link_to 'Show', study %>
-          <%= link_to 'Edit', edit_study_path(id: study, establishment_id: @establishment.id) %>
-          <%= link_to 'Destroy', study, method: :delete %>
+          <% if session[:editable] %>
+            <%= link_to 'Edit', edit_study_path(id: study, establishment_id: @establishment.id) %>
+            <%= link_to 'Destroy', study, method: :delete %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Add Study', new_study_path(establishment_id: @establishment.id) %>
+<%= link_to 'Add Study', new_study_path(establishment_id: @establishment.id) if session[:editable] %>
 <%= link_to 'Back', establishments_path %>

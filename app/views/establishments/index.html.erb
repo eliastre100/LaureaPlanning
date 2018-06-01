@@ -13,8 +13,10 @@
       <td><%= establishment.name %></td>
       <td>
         <%= link_to 'Show', establishment %>
-        <%= link_to 'Edit', edit_establishment_path(establishment) %>
-        <%= link_to 'Destroy', establishment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if session[:editable] %>
+          <%= link_to 'Edit', edit_establishment_path(establishment) %>
+          <%= link_to 'Destroy', establishment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </td>
     </tr>
   <% end %>
@@ -22,4 +24,4 @@
 
 </table>
 
-<%= link_to 'Create', new_establishment_url %>
+<%= link_to 'Create', new_establishment_url if session[:editable] %>

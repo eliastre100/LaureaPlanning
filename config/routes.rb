@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'instances/:id/pick', to: 'plannings#create', as: 'pick'
   delete 'instance/:id/pick', to: 'plannings#destroy', as: 'unpick'
 
+  get 'edition', to: 'editions#create', as: 'enable_edition'
+  delete 'edition', to: 'editions#destroy', as: 'disable_edition'
+
   resources :establishments
   resources :studies, except: [:index]
   resources :instances, except: [:index]

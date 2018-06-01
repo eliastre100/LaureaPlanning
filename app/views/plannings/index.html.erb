@@ -1,10 +1,11 @@
-<h1>My intances</h1>
+<h1>My instances</h1>
 <table>
   <thead>
     <tr>
       <th>Establishment</th>
       <th>Lesson</th>
       <th>Instance</th>
+      <th>Lessons</th>
       <th>Credits</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
         <td><%= link_to instance.study.establishment.name, instance.study.establishment %></td>
         <td><%= link_to instance.study.name, instance.study %></td>
         <td><%= link_to instance.code, instance %></td>
+        <td><%= instance.lessons.count %></td>
         <td><%= instance.study.credits %></td>
         <td><%= link_to 'Unpick', unpick_path(id: instance), method: :delete %></td>
       </tr>
@@ -29,12 +31,14 @@
     <tr>
       <th>Nb courses</th>
       <th>Nb Credits</th>
+      <th>Nb Lessons</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><%= @instances.select { |instance| instance.study }.uniq.count %></td>
       <td><%= @instances.map { |instance| instance.study.credits }.inject(&:+) %></td>
+      <td><%= @instances.map { |instance| instance.lessons.count }.inject(&:+) %></td>
     </tr>
   </tbody>
 </table>
